@@ -60,7 +60,7 @@ acow_malloc(size_t size)
 }
 
 void
-acow_free(void *ptr);
+acow_free(void *ptr)
 {
     // COWTODO(n2omatt): any checks??
     free(ptr);
