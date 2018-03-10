@@ -7,7 +7,7 @@
 //                    |   _   ||     |_ |       ||   _   |                    //
 //                    |__| |__||_______||_______||__| |__|                    //
 //                             www.amazingcow.com                             //
-//  File      : RawPointers.h                                                 //
+//  File      : Pointers.h                                                    //
 //  Project   : acow_c_goodies                                                //
 //  Date      : Mar 09, 2018                                                  //
 //  License   : GPLv3                                                         //

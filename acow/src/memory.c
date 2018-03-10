@@ -1,3 +1,23 @@
+//~---------------------------------------------------------------------------//
+//                     _______  _______  _______  _     _                     //
+//                    |   _   ||       ||       || | _ | |                    //
+//                    |  |_|  ||       ||   _   || || || |                    //
+//                    |       ||       ||  | |  ||       |                    //
+//                    |       ||      _||  |_|  ||       |                    //
+//                    |   _   ||     |_ |       ||   _   |                    //
+//                    |__| |__||_______||_______||__| |__|                    //
+//                             www.amazingcow.com                             //
+//  File      : memory.c                                                      //
+//  Project   : acow_c_goodies                                                //
+//  Date      : Mar 10, 2018                                                  //
+//  License   : GPLv3                                                         //
+//  Author    : n2omatt <n2omatt@amazingcow.com>                              //
+//  Copyright : AmazingCow - 2018                                             //
+//                                                                            //
+//  Description :                                                             //
+//                                                                            //
+//---------------------------------------------------------------------------~//
+
 // Header
 #include "acow/include/memory.h"
 // std
@@ -38,6 +58,7 @@ _acow_reset_memory(void *pMemory, size_t size, u8 what) ACOW_CPP_NOEXCEPT
 void*
 acow_alloca(size_t size)
 {
+    // COWTODO(n2omatt): A way to get the stack size would be nice...
     void* p_memory = alloca(size);
 
     COREASSERT_ASSERT(p_memory, "Can't alloca(3) memory - Size: %d", size);
