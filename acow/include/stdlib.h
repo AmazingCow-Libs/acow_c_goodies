@@ -19,13 +19,13 @@ long long int acow_atoll(const char *pstr);
 //------------------------------------------------------------------------------
 // Amazing Cow Functions.
 // @brief atoi with support for hexadecimal strings in format of: #hex, 0xhex.
-i32 acow_atoi_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
+int acow_atoi_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
 
 // @brief atol with support for hexadecimal strings in format of: #hex, 0xhex.
-i32 acow_atol_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
+long acow_atol_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
 
 // @brief atoll with support for hexadecimal strings in format of: #hex, 0xhex.
-i64 acow_atoll_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
+long long acow_atoll_ex(const char *pstr) ACOW_CPP_NOEXCEPT;
 
 //------------------------------------------------------------------------------
 // Feature Macros.
