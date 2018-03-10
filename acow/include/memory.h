@@ -20,11 +20,40 @@
 
 #pragma once
 
+// acow_c_goodies
+#include "numeric_types.h"
+#include "cpp_support.h"
 
-#define ACOW_SAFE_FREE(_ptr_)  \
-    do {                       \
-        if((_ptr_)) {          \
-            free((_ptr_));     \
-            (_ptr_) = nullptr; \
-        }                      \
+
+//----------------------------------------------------------------------------//
+// *alloc                                                                     //
+//----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------
+// C Functions.
+void* acow_alloca(size_t size);
+void* acow_malloc(size_t size);
+
+void acow_free(void *ptr);
+
+//------------------------------------------------------------------------------
+// Feature Macros
+#if !(ACOW_C_GOODIES_USE_ACOW_MEMORY_FUNCTIONS)
+    #define acow_alloca alloca
+    #define acow_malloc malloc
+    #define acow_free   free
+#endif
+
+// COWTODO(n2omatt): Implement....
+// extern void *calloc  (size_t __nmemb, size_t __size)
+// extern void *realloc (void *__ptr, size_t __size)
+
+//----------------------------------------------------------------------------//
+// Goodies Macros                                                             //
+//----------------------------------------------------------------------------//
+#define ACOW_SAFE_FREE(_ptr_)   \
+    do {                        \
+        if((_ptr_)) {           \
+            acow_free((_ptr_)); \
+            (_ptr_) = nullptr;  \
+        }                       \
     } while(0)
