@@ -1,5 +1,8 @@
 #pragma once
 
+// "Fake std"
+#include "stdlib.h"
+
 #include "include/bitwise_utils.h"
 #include "include/compiler_macros.h"
 #include "include/cpp_support.h"
