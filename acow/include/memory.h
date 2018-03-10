@@ -24,6 +24,10 @@
 #include "numeric_types.h"
 #include "cpp_support.h"
 
+#define ACOW_SIZE_BYTES(_size_) _size_
+#define ACOW_SIZE_KBYTES(_size_) ACOW_SIZE_BYTES((_size_)) * 1024
+#define ACOW_SIZE_MBYTES(_size_) ACOW_SIZE_KBYTES((_size_)) * 1024
+#define ACOW_SIZE_GBYTES(_size_) ACOW_SIZE_MBYTES((_size_)) * 1024
 
 //----------------------------------------------------------------------------//
 // *alloc                                                                     //
