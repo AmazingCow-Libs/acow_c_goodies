@@ -23,6 +23,8 @@
 // std
 #include <stdint.h>
 #include <stddef.h>
+// acow_c_goodies
+#include "cpp_support.h"
 
 
 //----------------------------------------------------------------------------//
@@ -43,7 +45,7 @@ typedef uint8_t byte;
 //----------------------------------------------------------------------------//
 // Bool                                                                       //
 //----------------------------------------------------------------------------//
-#if (!ACOW_IS_CPP)
+#if !(ACOW_IS_CPP)
     #include <stdbool.h>
     #define nullptr NULL
 #endif
