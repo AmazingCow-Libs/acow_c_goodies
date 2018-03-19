@@ -49,6 +49,7 @@ set(SOURCES
     acow/src/private/bitwise_utils.c
     acow/src/debugger.c
     acow/src/memory.c
+    acow/src/string.c
     acow/src/stdlib.c
 )
 
