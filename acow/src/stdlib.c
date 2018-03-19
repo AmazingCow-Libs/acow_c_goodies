@@ -205,7 +205,7 @@ int
 acow_putenv(const char *pstr)
 {
     COREASSERT_ASSERT(pstr, "pstr can't be null");
-    return putenv(pstr);
+    return putenv((char*)pstr);
 }
 
 #endif // (ACOW_C_GOODIES_USE_ACOW_ABORT_FUNCTIONS)
