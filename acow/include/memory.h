@@ -53,6 +53,9 @@ void acow_free(void *ptr);
 #define ACOW_SIZE_KBYTES(_size_) ACOW_SIZE_BYTES((_size_))  * 1024
 #define ACOW_SIZE_MBYTES(_size_) ACOW_SIZE_KBYTES((_size_)) * 1024
 #define ACOW_SIZE_GBYTES(_size_) ACOW_SIZE_MBYTES((_size_)) * 1024
+
+#define ACOW_SIZEOF(_type_, _count_) ( sizeof(_type_) * (_count_) )
+
 #define ACOW_SAFE_FREE(_ptr_)   \
     do {                        \
         if((_ptr_)) {           \
