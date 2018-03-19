@@ -21,7 +21,7 @@
 #pragma once
 
 #define ACOW_ARRAY_LENGTH(_array_) \
-    sizeof((_array_)) / sizeof((_array_))
+    sizeof((_array_)) / sizeof((_array_[0]))
 
 #define ACOW_SWAP_PTRS(_ptr1_, _ptr2_)     \
     do {                                   \
