@@ -66,8 +66,20 @@ acow_is_debugger_present() ACOW_CPP_NOEXCEPT
     return debugger_present;
 }
 
-#elif (ACOW_OS_IS_WINDOWS)
-    // COWTODO(n2omatt): Implement for windows.
+#elif (ACOW_OS_IS_WINDOWS)    
+    #define WINDOWS_LEAN_AND_MEAN   
+    #define _WINSOCKAPI_
+    #include <Windows.h>
+
+    bool acow_IsDebuggerPresent() ACOW_CPP_NOEXCEPT
+    {
+        return IsDebuggerPresent();
+    }
+
 #else
-    bool acow::IsDebuggerPresent() noexcept { return false; }
+    // COWTODO(n2omatt): Implement for other platforms.
+    bool acow_IsDebuggerPresent() ACOW_CPP_NOEXCEPT
+    {
+        return false;
+    }
 #endif
