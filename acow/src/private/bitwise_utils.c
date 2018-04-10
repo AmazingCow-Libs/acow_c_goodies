@@ -21,6 +21,7 @@
 // Header
 #include "acow/include/private/bitwise_utils.h"
 // std
+#include <stdarg.h>
 // acow_c_goodies
 #include "acow/include/numeric_types.h"
 
