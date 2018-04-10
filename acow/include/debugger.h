@@ -23,6 +23,9 @@
 // acow_c_goodies
 #include "cpp_support.h"
 #include "numeric_types.h"
+// acow_c_goodies - Private
+#include "private/debugger.h"
+
 
 //----------------------------------------------------------------------------//
 // Functions                                                                  //
@@ -33,9 +36,6 @@ bool acow_is_debugger_present() ACOW_CPP_NOEXCEPT;
 // Macros                                                                     //
 //----------------------------------------------------------------------------//
 // COWTODO(n2omatt): Works on GNU/Linux... abstract for other platforms...
-#define ACOW_DEBUGGER_BREAK()           \
-    do {                                \
-        if(acow_is_debugger_present()){ \
-            __asm__("int3");            \
-        }                               \
-    } while(0)
+#define ACOW_DEBUGGER_BREAK() \
+    _ACOW_PRIV_ACOW_DEBUGGER_BREAK()
+ 
