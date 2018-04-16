@@ -7,8 +7,8 @@
 //                    |   _   ||     |_ |       ||   _   |                    //
 //                    |__| |__||_______||_______||__| |__|                    //
 //                             www.amazingcow.com                             //
-//  File      : CPP_Version.h                                                 //
-//  Project   : acow_c_goodies                                                //
+//  File      : Debugger.h                                                    //
+//  Project   : acow_cpp_goodies                                              //
 //  Date      : Feb 23, 2018                                                  //
 //  License   : GPLv3                                                         //
 //  Author    : n2omatt <n2omatt@amazingcow.com>                              //
@@ -20,21 +20,22 @@
 
 #pragma once
 
-//----------------------------------------------------------------------------//
-// Is CPP                                                                     //
-//----------------------------------------------------------------------------//
-#if (__cplusplus)
-    #define ACOW_IS_CPP 1
-#else
-    #define ACOW_IS_CPP 0
-#endif
+// acow_c_goodies
+#include "acow/include/Discovery/cpp_support.h"
+#include "acow/include/Types/numeric_types.h"
+// acow_c_goodies - Private
+#include "private/debugger.h"
 
 
 //----------------------------------------------------------------------------//
-// noexcept                                                                   //
+// Functions                                                                  //
 //----------------------------------------------------------------------------//
-#if (ACOW_IS_CPP)
-    #define ACOW_CPP_NOEXCEPT noexcept
-#else
-    #define ACOW_CPP_NOEXCEPT
-#endif // (ACOW_IS_CPP)
+bool acow_is_debugger_present() ACOW_CPP_NOEXCEPT;
+
+//----------------------------------------------------------------------------//
+// Macros                                                                     //
+//----------------------------------------------------------------------------//
+// COWTODO(n2omatt): Works on GNU/Linux... abstract for other platforms...
+#define ACOW_DEBUGGER_BREAK() \
+    _ACOW_PRIV_ACOW_DEBUGGER_BREAK()
+ 

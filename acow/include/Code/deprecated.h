@@ -21,7 +21,8 @@
 #pragma once
 
 // acow_c_goodies
-#include "compiler_macros.h"
+#include "acow/include/Discovery/compiler_macros.h"
+
 
 //----------------------------------------------------------------------------//
 // GCC

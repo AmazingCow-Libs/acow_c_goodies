@@ -1,13 +1,13 @@
 // Header
-#include "acow/include/string.h"
+#include "acow/include/String/string.h"
 // std
 #include <stdio.h>
-// AmazingCow Libs
-#include "CoreAssert/CoreAssert.h"
+#include <ctype.h>
 // acow_c_goodies
-#include "acow/include/memory.h"
-#include "acow/include/assert.h"
-#include "acow/include/fake_keywords.h"
+#include "acow/include/Assert/assert.h"
+#include "acow/include/Code/fake_keywords.h"
+#include "acow/include/Memory/memory.h"
+
 
 
 //----------------------------------------------------------------------------//
@@ -24,7 +24,7 @@ acow_string_static_small_format(
 {
     ACOW_ASSERT_NOT_NULL(pFormat);
 
-    acow_local_persist char s_buffer[STRING_STATIC_SMALL_FORMAT] = {};
+    acow_local_persist char s_buffer[STRING_STATIC_SMALL_FORMAT] = {0};
 
     va_list _list;
     va_start(_list, pFormat);
@@ -34,7 +34,7 @@ acow_string_static_small_format(
             pFormat,
             _list
         );
-        COREASSERT_ASSERT(written == 0, "Can't format string in small static.");
+        ACOW_ASSERT(written == 0, "Can't format string in small static.");
     va_end(_list);
 
     return s_buffer;
@@ -64,7 +64,7 @@ acow_string_format_va(
     char *p_buf         = (char *)acow_malloc(ACOW_SIZEOF(char, required_size));
     u32   written_size  = vsnprintf(p_buf, required_size, pFormat, list_args);
 
-    COREASSERT_ASSERT(
+    ACOW_ASSERT(
         (required_size -1) == written_size,
         "vsnprintf error - Required (%d) - Written (%d)",
         required_size,

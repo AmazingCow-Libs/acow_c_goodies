@@ -20,52 +20,77 @@
 
 cmake_minimum_required(VERSION 3.5)
 
-##------------------------------------------------------------------------------
-## Project Settings.
-project(acow_c_goodies)
+##----------------------------------------------------------------------------##
+## Project                                                                    ##
+##----------------------------------------------------------------------------##
+set(PROJECT acow_c_goodies)
+project(${PROJECT})
+
+add_definitions(    
+    -DACOW_C_GOODIES_USE_ACOW_ATOX_FUNCTIONS=1
+    -DACOW_C_GOODIES_USE_ACOW_ABORT_FUNCTIONS=1
+    -DACOW_C_GOODIES_USE_ACOW_SYSTEM_FUNCTIONS=1
+    -DACOW_C_GOODIES_USE_ACOW_MEMORY_FUNCTIONS=1
+    -DACOW_C_GOODIES_USE_ACOW_MEMORY_CLEAN=1
+    -DACOW_C_GOODIES_ENABLE_ASSERTS=1    
+    -DACOW_C_GOODIES_USE_ACOW_MEMORY_CLEAN=1      
+)
 
 
+##----------------------------------------------------------------------------##
+## Sources                                                                    ##
+##----------------------------------------------------------------------------##
 ##------------------------------------------------------------------------------
-## Sources.
+## Headers
 set(HEADERS
-    acow/stdlib.h
-    acow/include/stdlib.h
-    acow/include/processor_macros.h
-    acow/include/private/bitwise_utils.h
-    acow/include/cpp_support.h
-    acow/include/deprecated.h
-    acow/include/compiler_macros.h
-    acow/include/pointers.h
-    acow/include/debugger.h
-    acow/include/bitwise_utils.h
-    acow/include/fake_keywords.h
-    acow/include/os_macros.h
-    acow/include/numeric_types.h
-    acow/include/memory.h
-    acow/c_goodies.h
+    ## For "std-like" includes.
+    acow/stdlib.h 
+    ## Library umbrella header.
+    acow/c_goodies.h 
+    ## Library headers.
+    acow/include/Assert/assert.h
+    acow/include/Bitwise/bitwise_utils.h
+    acow/include/Bitwise/private/bitwise_utils.h
+    acow/include/Code/deprecated.h
+    acow/include/Code/fake_keywords.h
+    acow/include/Code/macros.h
+    acow/include/Debug/debugger.h
+    acow/include/Debug/private/debugger.h
+    acow/include/Discovery/compiler_macros.h
+    acow/include/Discovery/cpp_support.h
+    acow/include/Discovery/os_macros.h
+    acow/include/Discovery/processor_macros.h
+    acow/include/Memory/memory.h
+    acow/include/Pointers/pointers.h
+    acow/include/std/stdlib.h
+    acow/include/String/string.h
+    acow/include/Types/numeric_types.h
 )
-
+##------------------------------------------------------------------------------
+## Sources
 set(SOURCES
-    acow/src/private/bitwise_utils.c
-    acow/src/debugger.c
-    acow/src/memory.c
-    acow/src/string.c
-    acow/src/stdlib.c
+    acow/src/Bitwise/private/bitwise_utils.c
+    acow/src/Debug/private/debugger.c
+    acow/src/Memory/memory.c
+    acow/src/std/stdlib.c
+    acow/src/String/string.c
 )
 
-add_library(acow_c_goodies ${SOURCES})
 
+##----------------------------------------------------------------------------##
+## Library                                                                    ##
+##----------------------------------------------------------------------------##
+##------------------------------------------------------------------------------
+## Lib.
+add_library(${PROJECT} ${SOURCES})
+
+##------------------------------------------------------------------------------
+## C++ support.
 if(CMAKE_CXX_COMPILER)
     SET_SOURCE_FILES_PROPERTIES(${HEADERS} PROPERTIES LANGUAGE CXX)
     SET_SOURCE_FILES_PROPERTIES(${SOURCES} PROPERTIES LANGUAGE CXX)
 endif(CMAKE_CXX_COMPILER)
 
-
-##------------------------------------------------------------------------------
+##-----------------------------------------------------------------------------
 ## Include directories.
-target_include_directories(acow_c_goodies PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-
-
-##------------------------------------------------------------------------------
-## Dependecies.
-target_link_libraries(acow_c_goodies LINK_PUBLIC CoreAssert)
+target_include_directories(${PROJECT} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

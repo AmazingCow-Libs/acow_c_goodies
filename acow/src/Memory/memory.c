@@ -19,16 +19,19 @@
 //---------------------------------------------------------------------------~//
 
 // Header
-#include "acow/include/memory.h"
+#include "acow/include/Memory/memory.h"
 // std
 #include <stdlib.h>
 #include <string.h>
 // acow_c_goodies
-#include "acow/include/cpp_support.h"
-#include "acow/include/fake_keywords.h"
-// AmazingCow Libs
-#include "CoreAssert/CoreAssert.h"
+#include "acow/include/Assert/assert.h"
+#include "acow/include/Code/fake_keywords.h"
+#include "acow/include/Discovery/cpp_support.h"
+#include "acow/include/Discovery/os_macros.h"
 
+#if (ACOW_OS_IS_WINDOWS)
+    #include <malloc.h>
+#endif
 
 //----------------------------------------------------------------------------//
 // Helper Functions                                                           //
@@ -61,7 +64,7 @@ acow_alloca(size_t size)
     // COWTODO(n2omatt): A way to get the stack size would be nice...
     void* p_memory = alloca(size);
 
-    COREASSERT_ASSERT(p_memory, "Can't alloca(3) memory - Size: %d", size);
+    ACOW_ASSERT(p_memory, "Can't alloca(3) memory - Size: %d", size);
     acow_reset_memory(p_memory, size, ACOW_C_GOODIES_MEMORY_CLEAN_BYTE);
 
     return p_memory;
@@ -74,7 +77,7 @@ acow_malloc(size_t size)
 
     void* p_memory = malloc(size);
 
-    COREASSERT_ASSERT(p_memory, "Can't malloc(3) memory - Size: %d", size);
+    ACOW_ASSERT(p_memory, "Can't malloc(3) memory - Size: %d", size);
     acow_reset_memory(p_memory, size, ACOW_C_GOODIES_MEMORY_CLEAN_BYTE);
 
     return p_memory;

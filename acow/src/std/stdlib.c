@@ -19,13 +19,13 @@
 //---------------------------------------------------------------------------~//
 
 // Header
-#include "acow/include/stdlib.h"
+#include "acow/include/std/stdlib.h"
 // std
+#include <stdlib.h>
 #include <ctype.h>
-// AmazingCow Libs
-#include "CoreAssert/CoreAssert.h"
 // acow_c_goodies
-#include "acow/include/debugger.h"
+#include "acow/include/Assert/assert.h"
+#include "acow/include/Debug/debugger.h"
 
 
 //----------------------------------------------------------------------------//
@@ -38,28 +38,28 @@
 double
 acow_atof(const char *pstr)
 {
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
     return atof(pstr);
 }
 
 int
 acow_atoi(const char *pstr)
 {
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
     return atoi(pstr);
 }
 
 long int
 acow_atol(const char *pstr)
 {
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
     return atol(pstr);
 }
 
 long long int
 acow_atoll(const char *pstr)
 {
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
     return atoll(pstr);
 }
 
@@ -77,7 +77,7 @@ long
 acow_atol_ex(const char *pstr) ACOW_CPP_NOEXCEPT
 {
    // COWTODO(n2omatt): would be nice to have a overflow check...
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
 
     // Don't mind about leading whitespaces...
     while(isspace(*pstr)) { ++pstr; }
@@ -125,7 +125,7 @@ long long
 acow_atoll_ex(const char *pstr) ACOW_CPP_NOEXCEPT
 {
     // COWTODO(n2omatt): would be nice to have a overflow check...
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
 
     // Don't mind about leading whitespaces...
     while(isspace(*pstr)) { ++pstr; }
@@ -197,14 +197,14 @@ acow_abort(void)
 char*
 acow_getenv(const char *pname)
 {
-    COREASSERT_ASSERT(pname, "pname can't be null");
+    ACOW_ASSERT_NOT_NULL(pname);
     return getenv(pname);
 }
 
 int
 acow_putenv(const char *pstr)
 {
-    COREASSERT_ASSERT(pstr, "pstr can't be null");
+    ACOW_ASSERT_NOT_NULL(pstr);
     return putenv((char*)pstr);
 }
 
@@ -221,7 +221,7 @@ acow_putenv(const char *pstr)
 int
 acow_system(const char *pcommand)
 {
-    COREASSERT_ASSERT(pcommand, "pcommand can't be null");
+    ACOW_ASSERT_NOT_NULL(pcommand);
     return system(pcommand);
 }
 

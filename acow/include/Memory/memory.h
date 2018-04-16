@@ -7,7 +7,7 @@
 //                    |   _   ||     |_ |       ||   _   |                    //
 //                    |__| |__||_______||_______||__| |__|                    //
 //                             www.amazingcow.com                             //
-//  File      : Debugger.c                                                    //
+//  File      : Memory.h                                                      //
 //  Project   : acow_c_goodies                                                //
 //  Date      : Feb 23, 2018                                                  //
 //  License   : GPLv3                                                         //
@@ -18,68 +18,49 @@
 //                                                                            //
 //---------------------------------------------------------------------------~//
 
-// Header
-#include "acow/include/debugger.h"
+#pragma once
+
 // acow_c_goodies
-#include "acow/include/os_macros.h"
-#include "acow/include/fake_keywords.h"
+#include "acow/include/Discovery/cpp_support.h"
+#include "acow/include/Types/numeric_types.h"
 
-#if (ACOW_OS_IS_GNU_LINUX)
+
+//----------------------------------------------------------------------------//
+// *alloc                                                                     //
+//----------------------------------------------------------------------------//
+//------------------------------------------------------------------------------
+// C Functions.
+void* acow_alloca(size_t size);
+void* acow_malloc(size_t size);
+
+void acow_free(void *ptr);
 
 //------------------------------------------------------------------------------
-// Includes
-#include <sys/stat.h>
-#include <string.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-//------------------------------------------------------------------------------
-// Implementation.
-//   Copied from: https://stackoverflow.com/a/24969863
-//   Thanks Sam Liao (https://stackoverflow.com/users/75501/sam-liao)
-bool
-acow_is_debugger_present() ACOW_CPP_NOEXCEPT
-{
-    char buf[1024];
-    int debugger_present = 0;
-
-    int status_fd = open("/proc/self/status", O_RDONLY);
-    if(status_fd == -1)
-        return false;
-
-    ssize_t num_read = read(status_fd, buf, sizeof(buf)-1);
-
-    if (num_read > 0)
-    {
-        acow_local_persist const char kTracerPid[] = "TracerPid:";
-        char *tracer_pid;
-
-        buf[num_read] = 0;
-        tracer_pid    = strstr(buf, kTracerPid);
-
-        if(tracer_pid)
-            debugger_present = !!atoi(tracer_pid + sizeof(kTracerPid) - 1);
-    }
-
-    return debugger_present;
-}
-
-#elif (ACOW_OS_IS_WINDOWS)    
-    #define WINDOWS_LEAN_AND_MEAN   
-    #define _WINSOCKAPI_
-    #include <Windows.h>
-
-    bool acow_IsDebuggerPresent() ACOW_CPP_NOEXCEPT
-    {
-        return IsDebuggerPresent();
-    }
-
-#else
-    // COWTODO(n2omatt): Implement for other platforms.
-    bool acow_IsDebuggerPresent() ACOW_CPP_NOEXCEPT
-    {
-        return false;
-    }
+// Feature Macros
+#if !(ACOW_C_GOODIES_USE_ACOW_MEMORY_FUNCTIONS)
+    #define acow_alloca alloca
+    #define acow_malloc malloc
+    #define acow_free   free
 #endif
+
+// COWTODO(n2omatt): Implement....
+// extern void *calloc  (size_t __nmemb, size_t __size)
+// extern void *realloc (void *__ptr, size_t __size)
+
+//----------------------------------------------------------------------------//
+// Goodies Macros                                                             //
+//----------------------------------------------------------------------------//
+#define ACOW_SIZE_BYTES(_size_) _size_
+#define ACOW_SIZE_KBYTES(_size_) ACOW_SIZE_BYTES((_size_))  * 1024
+#define ACOW_SIZE_MBYTES(_size_) ACOW_SIZE_KBYTES((_size_)) * 1024
+#define ACOW_SIZE_GBYTES(_size_) ACOW_SIZE_MBYTES((_size_)) * 1024
+
+#define ACOW_SIZEOF(_type_, _count_) ( sizeof(_type_) * (_count_) )
+
+#define ACOW_SAFE_FREE(_ptr_)   \
+    do {                        \
+        if((_ptr_)) {           \
+            acow_free((_ptr_)); \
+            (_ptr_) = nullptr;  \
+        }                       \
+    } while(0)

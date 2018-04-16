@@ -22,8 +22,8 @@
 // std
 #include <stdarg.h>
 // acow_c_utils
-#include "../numeric_types.h"
-#include "../cpp_support.h"
+#include "acow/include/Discovery/cpp_support.h"
+#include "acow/include/Types/numeric_types.h"
 
 
 //----------------------------------------------------------------------------//

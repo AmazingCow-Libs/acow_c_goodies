@@ -24,7 +24,7 @@
 #include <stdint.h>
 #include <stddef.h>
 // acow_c_goodies
-#include "cpp_support.h"
+#include "acow/include/Discovery/cpp_support.h"
 
 
 //----------------------------------------------------------------------------//
