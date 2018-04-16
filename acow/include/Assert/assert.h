@@ -26,6 +26,8 @@
 //      5 - A user given message with variadic arguments like printf(3)       //
 //---------------------------------------------------------------------------~//
 
+#pragma once
+
 // acow_c_goodies
 #include "acow/include/Code/macros.h"
 #include "acow/include/String/string.h"
