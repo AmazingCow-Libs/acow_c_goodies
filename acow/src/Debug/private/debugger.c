@@ -66,8 +66,8 @@ acow_is_debugger_present() ACOW_CPP_NOEXCEPT
     return debugger_present;
 }
 
-#elif (ACOW_OS_IS_WINDOWS)    
-    #define WINDOWS_LEAN_AND_MEAN   
+#elif (ACOW_OS_IS_WINDOWS)
+    #define WINDOWS_LEAN_AND_MEAN
     #define _WINSOCKAPI_
     #include <Windows.h>
 

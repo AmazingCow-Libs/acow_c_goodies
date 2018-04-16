@@ -57,5 +57,3 @@
 //----------------------------------------------------------------------------//
 #define ACOW_FLAG_ARE_EXCLUSIVE(_var_, ...) \
     _ACOW_PRIV_ACOW_FLAG_ARE_EXCLUSIVE(_var_,  __VA_ARGS__)
-
-

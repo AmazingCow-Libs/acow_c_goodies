@@ -38,4 +38,3 @@ bool acow_is_debugger_present() ACOW_CPP_NOEXCEPT;
 // COWTODO(n2omatt): Works on GNU/Linux... abstract for other platforms...
 #define ACOW_DEBUGGER_BREAK() \
     _ACOW_PRIV_ACOW_DEBUGGER_BREAK()
- 
