@@ -65,6 +65,7 @@ set(HEADERS
     acow/include/std/stdlib.h
     acow/include/String/string.h
     acow/include/Types/numeric_types.h
+    acow/include/version.h
 )
 ##------------------------------------------------------------------------------
 ## Sources
