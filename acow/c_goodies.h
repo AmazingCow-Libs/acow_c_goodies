@@ -20,6 +20,8 @@
 //------------------------------------------------------------------------------
 // Debug
 #include "include/Debug/debugger.h"
+#include "include/Debug/not_implemented.h"
+#include "include/Debug/only_in_debug.h"
 //------------------------------------------------------------------------------
 // Discovery
 #include "include/Discovery/compiler_macros.h"
