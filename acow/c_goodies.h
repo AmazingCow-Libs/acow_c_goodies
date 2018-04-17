@@ -40,6 +40,7 @@
 //------------------------------------------------------------------------------
 // Types
 #include "include/Types/numeric_types.h"
+#include "include/Types/time_types.h"
 //------------------------------------------------------------------------------
 // Version
 #include "include/version.h"
