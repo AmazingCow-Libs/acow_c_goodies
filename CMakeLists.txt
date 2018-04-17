@@ -61,7 +61,7 @@ set(HEADERS
         ##   Debug
     acow/include/Debug/debugger.h
     acow/include/Debug/not_implemented.h
-    acow/include/Debug/only_in_debug.h    
+    acow/include/Debug/only_in_debug.h
     acow/include/Debug/private/debugger.h
         ##   Discovery
     acow/include/Discovery/compiler_macros.h
@@ -78,6 +78,7 @@ set(HEADERS
     acow/include/String/string.h
         ##   Types
     acow/include/Types/numeric_types.h
+    acow/include/Types/time_types.h
 )
 ##------------------------------------------------------------------------------
 ## Sources
