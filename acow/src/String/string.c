@@ -9,12 +9,21 @@
 #include "acow/include/Memory/memory.h"
 
 
-
 //----------------------------------------------------------------------------//
 // Constants                                                                  //
 //----------------------------------------------------------------------------//
 #define STRING_STATIC_SMALL_FORMAT 1024
 
+//------------------------------------------------------------------------------
+// C Functions.
+void*
+acow_memcpy(void *dst, void *src, size_t size) ACOW_CPP_NOEXCEPT
+{
+    ACOW_ASSERT_NOT_NULL(src);
+    ACOW_ASSERT_NOT_NULL(dst);
+
+    return memcpy(dst, src, size);
+}
 
 //------------------------------------------------------------------------------
 // AmazingCow Functions.

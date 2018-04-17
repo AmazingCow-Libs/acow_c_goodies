@@ -6,11 +6,22 @@
 #include "acow/include/Discovery/cpp_support.h"
 #include "acow/include/Types/numeric_types.h"
 
+
+//------------------------------------------------------------------------------
+// C Functions.
+void* acow_memcpy(void *dst, void *src, size_t size) ACOW_CPP_NOEXCEPT;
+
+//------------------------------------------------------------------------------
+// Feature Macros
+#if !(ACOW_C_GOODIES_USE_ACOW_STRING_FUNCTIONS)
+    #define acow_memcpy memcpy
+#endif
+
+
 //------------------------------------------------------------------------------
 // AmazingCow Functions.
 char* acow_string_static_small_format(
     const char *pFormat, ...) ACOW_CPP_NOEXCEPT;
-
 
 char* acow_string_format(const char* pFormat, ...) ACOW_CPP_NOEXCEPT;
 
