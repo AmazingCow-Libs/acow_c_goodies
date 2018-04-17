@@ -20,12 +20,20 @@
 
 #pragma once
 
+//------------------------------------------------------------------------------
 #define ACOW_ARRAY_LENGTH(_array_) \
     sizeof((_array_)) / sizeof((_array_[0]))
 
+//------------------------------------------------------------------------------
 #define ACOW_SWAP_PTRS(_ptr1_, _ptr2_) \
     do {                               \
         void *tmp = (_ptr1_);          \
         (_ptr1_) = (_ptr2_);           \
         (_ptr2_ )= tmp;                \
     } while(0)
+
+//------------------------------------------------------------------------------
+#define ACOW_SAFE_ASSIGN(_var_, _value_)  \
+	do {							 \
+		if (_var_) *_var_ = _value_; \
+    } while (0)
