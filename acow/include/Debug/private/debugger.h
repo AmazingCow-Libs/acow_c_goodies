@@ -4,7 +4,7 @@
 #include "acow/include/Discovery/os_macros.h"
 
 //------------------------------------------------------------------------------
-#if (ACOW_OS_IS_LINUX) 
+#if (ACOW_OS_IS_LINUX)
     #define _ACOW_PRIV_ACOW_DEBUGGER_BREAK() \
         do {                                 \
              if(acow_is_debugger_present()){ \
@@ -14,15 +14,15 @@
 
 //------------------------------------------------------------------------------
 #elif (ACOW_OS_IS_WINDOWS)
-    #define WINDOWS_LEAN_AND_MEAN   
-    #define _WINSOCKAPI_    
+    #define WINDOWS_LEAN_AND_MEAN
+    #define _WINSOCKAPI_
     #include <Windows.h>
 
     #define _ACOW_PRIV_ACOW_DEBUGGER_BREAK() \
         DebugBreak()
 
 //------------------------------------------------------------------------------
-#else 
+#else
     #error "DEBUGGER_BREAK IS NOT DEFINED FOR THIS OS"
 
-#endif // (ACOW_OS_IS_LINUX) 
+#endif // (ACOW_OS_IS_LINUX)

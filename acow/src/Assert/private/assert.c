@@ -41,9 +41,9 @@ static char kBuffer[BUFFER_SIZE] = {0};
 //----------------------------------------------------------------------------//
 acow_internal_function char*
 vformat(
-    char       *buffer, 
-    size_t      bufferSize, 
-    const char *fmt, 
+    char       *buffer,
+    size_t      bufferSize,
+    const char *fmt,
     va_list     list) ACOW_CPP_NOEXCEPT
 {
     memset(buffer, bufferSize, 0);

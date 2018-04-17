@@ -37,12 +37,9 @@
 
 #pragma once
 
-// CoreAssert
-#include "Config.h"
-
 //------------------------------------------------------------------------------
 // Debug Mode.
-#if (COREASSERT_CONFIG_MODE == COREASSERT_CONFIG_MODE_DEBUG)
+#if (ACOW_ONLY_IN_DEBUG_ENABLED)
 
     ///-------------------------------------------------------------------------
     /// @brief
@@ -50,11 +47,11 @@
     ///   is built in DEBUG mode.
     /// @param code
     ///   Any piece of code ;D
-    #define COREASSERT_ONLY_IN_DEBUG(_code_) do { _code_ } while(0);
+    #define ACOW_ONLY_IN_DEBUG(_code_) do { _code_ } while(0);
 
 //------------------------------------------------------------------------------
 // Release mode.
 #else
-    #define COREASSERT_ONLY_IN_DEBUG(_code_) do {} while(0);
+    #define ACOW_ONLY_IN_DEBUG(_code_) do {} while(0);
 
-#endif // (COREASSERT_CONFIG_MODE == COREASSERT_CONFIG_MODE_DEBUG)
+#endif // #if (ACOW_ONLY_IN_DEBUG_ENABLED)
