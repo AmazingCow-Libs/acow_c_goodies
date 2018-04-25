@@ -29,6 +29,9 @@
 #include "include/Discovery/processor_macros.h"
 #include "include/Discovery/os_macros.h"
 //------------------------------------------------------------------------------
+// File
+#include "include/File/file.h"
+//------------------------------------------------------------------------------
 // Memory
 #include "include/Memory/memory.h"
 //------------------------------------------------------------------------------
