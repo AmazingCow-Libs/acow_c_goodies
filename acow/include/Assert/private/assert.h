@@ -30,14 +30,24 @@
 //----------------------------------------------------------------------------//
 // Functions                                                                  //
 //----------------------------------------------------------------------------//
-ACOW_EXTERN_C char*
-_acow_assert_private_join_args(const char *fmt, ...) ACOW_CPP_NOEXCEPT;
-
+//------------------------------------------------------------------------------
+// Print the Assertion message and abort.
 ACOW_EXTERN_C void
-_acow_assert_private_print_args(
-    const    char   *expr,
-    const    char   *file,
+_acow_assert_private_print_assertion_and_abort(
+    const    char   *pExpressionStr,
+    const    char   *pFileStr,
     unsigned int     line,
-    const    char   *func,
-    const    char   *msg,
+    const    char   *pFunctionStr,
+    const    char   *pDetailMessageFmt,
+    ...) ACOW_CPP_NOEXCEPT;
+
+
+//------------------------------------------------------------------------------
+// Print the Unreachable message and abort.
+ACOW_EXTERN_C void
+_acow_assert_private_print_unreachable_and_abort(
+    const    char *pFileStr,
+    unsigned int   line,
+    const    char *pFunctionStr,
+    const    char *pDetailMessageFmt,
     ...) ACOW_CPP_NOEXCEPT;
