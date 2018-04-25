@@ -26,16 +26,6 @@ cmake_minimum_required(VERSION 3.5)
 set(PROJECT acow_c_goodies)
 project(${PROJECT})
 
-add_definitions(
-    -DACOW_C_GOODIES_USE_ACOW_ATOX_FUNCTIONS=1
-    -DACOW_C_GOODIES_USE_ACOW_ABORT_FUNCTIONS=1
-    -DACOW_C_GOODIES_USE_ACOW_SYSTEM_FUNCTIONS=1
-    -DACOW_C_GOODIES_USE_ACOW_MEMORY_FUNCTIONS=1
-    -DACOW_C_GOODIES_USE_ACOW_MEMORY_CLEAN=1
-    -DACOW_C_GOODIES_ENABLE_ASSERTS=1
-    -DACOW_C_GOODIES_USE_ACOW_MEMORY_CLEAN=1
-)
-
 
 ##----------------------------------------------------------------------------##
 ## Sources                                                                    ##
