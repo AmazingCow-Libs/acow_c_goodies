@@ -69,6 +69,28 @@
         }                                                    \
     } while(0)
 
+//COWTODO(n2omatt): Update docs...
+#define ACOW_ASSERT_UNREACHABLE()                         \
+    do {                                                  \
+        _acow_assert_private_print_unreachable_and_abort( \
+            __FILE__,                                     \
+            __LINE__,                                     \
+            __func__,                                     \
+            ""                                            \
+        );                                                \
+    } while(0)
+
+//COWTODO(n2omatt): Update docs...
+#define ACOW_ASSERT_UNREACHABLE_ARGS(_fmt_, ...)          \
+    do {                                                  \
+        _acow_assert_private_print_unreachable_and_abort( \
+            __FILE__,                                     \
+            __LINE__,                                     \
+            __func__,                                     \
+            (_fmt_),                                      \
+            ##__VA_ARGS__                                 \
+        );                                                \
+    } while(0)
 
 //------------------------------------------------------------------------------
 // Assertions are disabled.
