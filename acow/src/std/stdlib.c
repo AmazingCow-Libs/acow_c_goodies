@@ -197,13 +197,15 @@ acow_abort(void)
 char*
 acow_getenv(const char *pname)
 {
+    // COWNOTE: On MSVC without CRT_SECURE_NO_WARNINGS this emits a warning.
     ACOW_ASSERT_NOT_NULL(pname);
-    return getenv(pname);
+    return getenv(pname); 
 }
 
 int
 acow_putenv(const char *pstr)
 {
+    // COWNOTE: On MSVC without CRT_SECURE_NO_WARNINGS this emits a warning.
     ACOW_ASSERT_NOT_NULL(pstr);
     return putenv((char*)pstr);
 }

@@ -141,5 +141,6 @@ acow_string_alloc_copy(const char *pStr) ACOW_CPP_NOEXCEPT
     u32   len   = strlen(pStr);
     char *p_dst = (char *)acow_malloc(ACOW_SIZEOF(char, len));
 
+    // COWNOTE: On MSVC without CRT_SECURE_NO_WARNINGS this emits a warning.
     return strcpy(p_dst, pStr);
 }
