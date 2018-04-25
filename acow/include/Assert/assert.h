@@ -40,38 +40,42 @@
 //----------------------------------------------------------------------------//
 //------------------------------------------------------------------------------
 // Assertions are enabled.
-#if (ACOW_C_GOODIES_ENABLE_ASSERTS) 
-    //COWTODO(n2omatt): Update docs...
-    ///-------------------------------------------------------------------------
-    /// @brief
-    ///   Provides an runtime assertion about the condition.
-    /// @param cond
-    ///   The condition that will be tested - like (pFile != nullptr),
-    ///   if the condition fails, the assertion will be triggered.
-    /// @param msg
-    ///   A C-style string message - It can contains the same format specifiers
-    ///   as the printf(3) would accept.
-    /// @param ...
-    ///   Variadic arguments that will be used as argument to the format msg.
-    /// @see
-    ///   COREASSERT_VERIFY.
-    #define ACOW_ASSERT(_cond_, _msg_, ...)  \
-        ((_cond_))                           \
-         ? (void) 0 /* No-Op */              \
-         : _acow_assert_private_print_args(  \
-                #_cond_,                     \
-                __FILE__,                    \
-                __LINE__,                    \
-                __func__,                    \
-                (_msg_),                     \
-                ##__VA_ARGS__                \
-           )
+#if (ACOW_C_GOODIES_ENABLE_ASSERTS)
+//COWTODO(n2omatt): Update docs...
+///-------------------------------------------------------------------------
+/// @brief
+///   Provides an runtime assertion about the condition.
+/// @param cond
+///   The condition that will be tested - like (pFile != nullptr),
+///   if the condition fails, the assertion will be triggered.
+/// @param msg
+///   A C-style string message - It can contains the same format specifiers
+///   as the printf(3) would accept.
+/// @param ...
+///   Variadic arguments that will be used as argument to the format msg.
+/// @see
+///   COREASSERT_VERIFY.
+#define ACOW_ASSERT(_expr_, _fmt_, ...)                      \
+    do {                                                     \
+        if(!(_expr_)) {                                      \
+            _acow_assert_private_print_assertion_and_abort(  \
+                    #_expr_,                                 \
+                    __FILE__,                                \
+                    __LINE__,                                \
+                    __func__,                                \
+                    (_fmt_),                                 \
+                    ##__VA_ARGS__                            \
+            );                                               \
+        }                                                    \
+    } while(0)
+
 
 //------------------------------------------------------------------------------
 // Assertions are disabled.
-#else 
-    #define ACOW_ASSERT(_cond_, _msg_, ...) \
-        do { } while(0)
+#else
+
+#define ACOW_ASSERT(_cond_, _msg_, ...) \
+    do { } while(0)
 
 #endif // (ACOW_C_GOODIES_ENABLE_ASSERTS)
 
