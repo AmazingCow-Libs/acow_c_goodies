@@ -73,6 +73,8 @@ set(HEADERS
 ##------------------------------------------------------------------------------
 ## Sources
 set(SOURCES
+    acow/src/Assert/private/assert.c
+
     acow/src/Bitwise/private/bitwise_utils.c
 
     acow/src/Debug/private/debugger.c
