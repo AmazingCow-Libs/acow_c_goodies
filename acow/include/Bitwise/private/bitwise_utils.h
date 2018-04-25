@@ -73,7 +73,7 @@ bool _acow_private_flag_check_exclusivity(u32 var, u8 argsSize, ...) ACOW_CPP_NO
 //----------------------------------------------------------------------------//
 // Has                                                                        //
 //----------------------------------------------------------------------------//
-#define _ACOW_PRIV_ACOW_FLAG_HAS(_what_, _var_) \
+#define _ACOW_PRIV_ACOW_FLAG_HAS(_var_, _what_) \
     (((_var_) & (_what_)) == (_what_))
 
 #define _ACOW_PRIV_ACOW_FLAG_HAS_ANY(_var_, ...) \

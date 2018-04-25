@@ -42,8 +42,8 @@
 //----------------------------------------------------------------------------//
 // Has                                                                        //
 //----------------------------------------------------------------------------//
-#define ACOW_FLAG_HAS(_what_, _var_) \
-    _ACOW_PRIV_ACOW_FLAG_HAS(_what_, _var_)
+#define ACOW_FLAG_HAS(_var_, _what_) \
+    _ACOW_PRIV_ACOW_FLAG_HAS(_var_, _what_)
 
 #define ACOW_FLAG_HAS_ANY(_var_,  ...) \
     _ACOW_PRIV_ACOW_FLAG_HAS_ANY(_var_, __VA_ARGS__)
